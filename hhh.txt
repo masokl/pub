@@ -1,0 +1,23 @@
+/**
+ * Function to print the current Bitcoin price.
+ *
+ * @returns {Promise<void>} A Promise that resolves when the Bitcoin price is printed.
+ */
+async function printBitcoinPrice() {
+    try {
+        // Make an API request to fetch the Bitcoin price
+        const response = await fetch('https://api.coindesk.com/v1/bpi/currentprice/BTC.json');
+        const data = await response.json();
+
+        // Extract the Bitcoin price from the response data
+        const price = data.bpi.USD.rate;
+
+        // Print the Bitcoin price
+        console.log(`The current Bitcoin price is $${price}`);
+    } catch (error) {
+        console.error('An error occurred while fetching the Bitcoin price:', error);
+    }
+}
+
+// Usage Example
+printBitcoinPrice();
